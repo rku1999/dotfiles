@@ -1,1 +1,5 @@
-/home/rku1999/.ssh/config
+### CAEN
+Host caen
+	HostName login.engin.umich.edu
+	User rayku
+	
