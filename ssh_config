@@ -1,5 +1,1 @@
-# CAEN
-Host caen
-  HostName login.engin.umich.edu
-  User rayku
-  Compression yes
+/home/rku1999/.ssh/config
