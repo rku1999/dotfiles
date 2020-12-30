@@ -122,3 +122,19 @@ fi
 #then
 #	export PS1="\e[0;31m\e[47m\t \u@\h> \e[m"
 #fi
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+# Install Ruby Gems to ~/gems
+export GEM_HOME="$HOME/gems"
+export PATH="$HOME/gems/bin:$PATH"
+export PATH="/usr/bin/git:$PATH"
+
+
+parse_git_branch() {
+     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+}
+
+export PS1="\[\033[01;32m\]\u@\h:\[\e[34m\]\w \[\e[91m\]\$(parse_git_branch)\[\e[00m\]$ "
+cd /mnt/c/Ray_Data/FA2020
+export DISPLAY=127.0.0.1:0.0
