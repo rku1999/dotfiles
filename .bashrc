@@ -116,19 +116,63 @@ if ! shopt -oq posix; then
   fi
 fi
 
-#export PS1="\e[0;36m\e[47m\t \u@\h> \e[m"
-#export PS2="continue-> "
-#if [ -d.git ] && ! git diff-index --quiet HEAD --
-#then
-#	export PS1="\e[0;31m\e[47m\t \u@\h> \e[m"
-#fi
+export PATH="$PATH:/usr/local/android-studio/bin"
+export PATH="$PATH:/usr/local/go/bin"
+export PATH="$PATH:/home/rku/snap/flutter/common/flutter/bin"
+export PATH="$PATH:/usr/local/android-studio/bin"
+export PATH="$PATH:/home/rku/.cargo/bin"
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
-# Install Ruby Gems to ~/gems
-export GEM_HOME="$HOME/gems"
-export PATH="$HOME/gems/bin:$PATH"
-export PATH="/usr/bin/git:$PATH"
+# ----------------------
+# Git Aliases
+# ----------------------
+alias ga='git add'
+alias gaa='git add .'
+alias gaaa='git add --all'
+alias gau='git add --update'
+alias gb='git branch'
+alias gbd='git branch --delete '
+alias gc='git commit'
+alias gcm='git commit --message'
+alias gcf='git commit --fixup'
+alias gco='git checkout'
+alias gcob='git checkout -b'
+alias gcom='git checkout master'
+alias gcos='git checkout staging'
+alias gcod='git checkout develop'
+alias gd='git diff'
+alias gda='git diff HEAD'
+alias gi='git init'
+alias gl='git pull'
+alias glg='git log --graph --oneline --decorate --all'
+alias gld='git log --pretty=format:"%h %ad %s" --date=short --all'
+alias gm='git merge --no-ff'
+alias gma='git merge --abort'
+alias gmc='git merge --continue'
+alias gp='git push'
+alias gr='git rebase'
+alias gs='git status'
+alias gss='git status --short'
+alias gst='git stash'
+alias gsta='git stash apply'
+alias gstd='git stash drop'
+alias gstl='git stash list'
+alias gstp='git stash pop'
+alias gsts='git stash save'
+
+# ----------------------
+# Git Functions
+# ----------------------
+# Git log find by commit message
+function glf() { git log --all --grep="$1"; }
+function current_branch() {
+  ref=$(git symbolic-ref HEAD 2> /dev/null) || return
+  echo ${ref#refs/heads/}
+}
+
+# these aliases take advantage of the previous function
+alias ggpull='git pull origin $(current_branch)'
+alias ggpush='git push origin $(current_branch)'
+alias gpa='git add .; git commit -m "$1"; git push;'
 
 
 parse_git_branch() {
@@ -136,5 +180,20 @@ parse_git_branch() {
 }
 
 export PS1="\[\033[01;32m\]\u@\h:\[\e[34m\]\w \[\e[91m\]\$(parse_git_branch)\[\e[00m\]$ "
-cd /mnt/c/Ray_Data/FA2020
-export DISPLAY=127.0.0.1:0.0
+
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/rku/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/rku/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/rku/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/rku/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
