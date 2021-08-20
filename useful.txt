@@ -1,0 +1,8 @@
+# move A LOT of files from dir1 to dir2
+find dir1 -name '*.*' -exec mv {} dir2 \;
+
+# count number of files in dir
+ls | wc -l
+
+# size of dir
+du -sh dir
