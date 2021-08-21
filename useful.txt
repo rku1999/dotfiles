@@ -9,4 +9,9 @@ du -sh dir
 
 echo {1..5} # 1 2 3 4 5
 
+# resize partition
+sudo growpart DISK PARTITION-NUMBER
+sudo resize2fs DEVICE
+# e.g. DISK=/dev/sda, PARTITION-NUMBER=1, DEVICE=/dev/sda1
+
 
