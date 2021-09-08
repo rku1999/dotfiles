@@ -180,7 +180,7 @@ parse_git_branch() {
      git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
 }
 
-export PS1="\[\033[01;32m\]\u@\h:\[\e[34m\]\w \[\e[91m\]\$(parse_git_branch)\[\e[00m\]$ "
+export PS1="\t \[\033[01;32m\]\u@\h:\[\e[34m\]\w \[\e[91m\]\$(parse_git_branch)\[\e[00m\]$ "
 
 
 # >>> conda initialize >>>
@@ -198,3 +198,10 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+conda deactivate
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/rku/Desktop/google-cloud-sdk/path.bash.inc' ]; then . '/home/rku/Desktop/google-cloud-sdk/path.bash.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/rku/Desktop/google-cloud-sdk/completion.bash.inc' ]; then . '/home/rku/Desktop/google-cloud-sdk/completion.bash.inc'; fi
