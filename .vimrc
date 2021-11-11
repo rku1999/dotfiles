@@ -31,3 +31,4 @@ set ignorecase
 set smartcase
 set showmatch
 map <leader><space> :let @/=''<cr> " clear search
+nnoremap <silent> <C-l> :nohl<CR><C-l>
