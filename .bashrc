@@ -121,6 +121,7 @@ export PATH="$PATH:/usr/local/go/bin"
 export PATH="$PATH:/home/rku/snap/flutter/common/flutter/bin"
 export PATH="$PATH:/usr/local/android-studio/bin"
 export PATH="$PATH:/home/rku/.cargo/bin"
+export EDITOR="vim"
 
 # ----------------------
 # Git Aliases
