@@ -1,0 +1,5 @@
+ssh-keygen
+eval `ssh-agent`
+ssh-add ~/.ssh/<private_key_file>
+add public key to github
+ssh -T git@github.com
